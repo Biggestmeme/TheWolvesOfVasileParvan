@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.bursierii.client;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
