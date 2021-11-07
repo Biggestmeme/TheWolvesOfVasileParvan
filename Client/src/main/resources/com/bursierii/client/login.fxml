@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bursierii.client.controllers.LoginController">
+    <left>
+        <AnchorPane prefHeight="550.0" prefWidth="350.0" style="-fx-background-color: ffffe6;" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="brandingImageView" fitHeight="253.0" fitWidth="336.0" layoutX="14.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/stonks.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </left>
+    <right>
+        <AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: f3f0b3;" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="40.0" layoutY="136.0" text="Username">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="42.0" layoutY="195.0" text="Password">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <TextField id="username" fx:id="username" layoutX="133.0" layoutY="135.0" prefHeight="26.0" prefWidth="200.0" promptText="Username">
+                    <font>
+                        <Font size="14.0" />
+                    </font></TextField>
+                <PasswordField id="password" fx:id="password" layoutX="133.0" layoutY="194.0" prefHeight="26.0" prefWidth="200.0" promptText="Password">
+                    <font>
+                        <Font size="14.0" />
+                    </font></PasswordField>
+                <Button id="loginButton" fx:id="loginButton" layoutX="87.0" layoutY="343.0" mnemonicParsing="false" onAction="#Login" prefHeight="26.0" prefWidth="257.0" style="-fx-background-color: #009292;" text="Login" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font></Button>
+                <Button fx:id="signupButton" layoutX="87.0" layoutY="404.0" mnemonicParsing="false" onAction="#Signup" prefHeight="26.0" prefWidth="257.0" style="-fx-background-color: #009292;" text="Sign Up" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font></Button>
+                <ImageView fx:id="lockImageView" fitHeight="76.0" fitWidth="89.0" layoutX="181.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/lacat.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="69.0" layoutY="247.0" text="Role">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label id="loginMessageLabel" fx:id="loginMessageLabel" alignment="CENTER" layoutX="80.0" layoutY="305.0" prefHeight="20.0" prefWidth="270.0" textFill="#e40909">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="43.0" layoutY="108.0" text="DB Status" />
+                <Label fx:id="dbstatus" layoutX="114.0" layoutY="108.0" prefHeight="18.0" prefWidth="214.0" />
+                <ComboBox id="role" fx:id="combobox" layoutX="133.0" layoutY="248.0" prefHeight="26.0" prefWidth="200.0" promptText="Client / Manager" />
+                <Separator layoutX="-4.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="550.0" prefWidth="0.0" style="-fx-background-color: #009292;" />
+            </children>
+        </AnchorPane>
+    </right>
+</BorderPane>
