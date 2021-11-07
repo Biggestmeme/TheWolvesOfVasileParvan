@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: f3f0b3;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bursierii.client.controllers.SignupController">
+   <children>
+      <Label layoutX="85.0" layoutY="166.0" text="First Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="86.0" layoutY="214.0" text="Last Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="261.0" text="Username">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="86.0" layoutY="311.0" text="Password">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="359.0" text="Confirm password">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField id="fnameInput" fx:id="fnameInput" layoutX="202.0" layoutY="165.0" promptText="First Name">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField id="lnameInput" fx:id="lnameInput" layoutX="201.0" layoutY="213.0" promptText="Last Name">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField id="usernameInput" fx:id="usernameInput" layoutX="201.0" layoutY="260.0" promptText="Username">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <PasswordField id="passwordInput" fx:id="passwordInput" layoutX="202.0" layoutY="310.0" promptText="****">
+         <font>
+            <Font size="14.0" />
+         </font></PasswordField>
+      <PasswordField id="confirmPassInput" fx:id="confirmPassInput" layoutX="202.0" layoutY="358.0" promptText="****">
+         <font>
+            <Font size="14.0" />
+         </font></PasswordField>
+      <Label alignment="CENTER" prefHeight="115.0" prefWidth="800.0" style="-fx-background-color: #009292;" text="  USER REGISTRATION" textFill="#283d3b">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="115.0" fitWidth="112.0" layoutX="20.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/signup.png" />
+         </image>
+      </ImageView>
+      <Label id="passNotMatchLabel" fx:id="passNotMatchLabel" layoutX="400.0" layoutY="363.0" textFill="#f71500">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="accessWarning" fx:id="accessWarning" layoutX="400.0" layoutY="456.0" textFill="#f71500">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button id="createAcc" fx:id="createAcc" layoutX="229.0" layoutY="413.0" mnemonicParsing="false" onAction="#onSignup" style="-fx-background-color: #009292;" text="Create account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Label id="roleWarning" fx:id="roleWarning" layoutX="400.0" layoutY="408.0" textFill="#f71500">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="passwordWarning" fx:id="passwordWarning" layoutX="400.0" layoutY="316.0" textFill="#f71500">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="usernameWarning" fx:id="usernameWarning" layoutX="400.0" layoutY="267.0" textFill="#f71500">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="firstNameWarning" fx:id="firstNameWarning" layoutX="400.0" layoutY="171.0" textFill="#f71500">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="lastNameWarning" fx:id="lastNameWarning" layoutX="400.0" layoutY="219.0" textFill="#f71500">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="704.0" layoutY="497.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #009292;" text="&lt; Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
