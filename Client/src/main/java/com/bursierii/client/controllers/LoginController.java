@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class LoginController {
-
     @FXML
     public void Login(ActionEvent event){
         System.out.println("Login");

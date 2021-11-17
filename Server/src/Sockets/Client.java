@@ -10,11 +10,11 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Client implements ClientHandler {
+
     public Socket socket;
     public Thread thread;
-    public PrintWriter output;
+    public PrintWriter output; 
     public BufferedReader input;
-
 
     public void setSocket(Socket socket) {
         this.socket = socket;
@@ -25,7 +25,6 @@ public class Client implements ClientHandler {
             e.printStackTrace();
         }
     }
-
 
     //here happens the logic
     @Override
@@ -38,11 +37,9 @@ public class Client implements ClientHandler {
     @Override
     public void closeClient() {
         try {
-
             this.socket.close();
             this.input.close();
             this.output.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
