@@ -24,8 +24,7 @@ public class Server {
         try {
             server = new ServerSocket(this.PORT);
 
-            while(true) {
-
+            while (true) {
                 Client client = new Client();
                 client.setSocket(this.server.accept());
                 client.thread = new Thread(new Runnable() {
@@ -34,7 +33,6 @@ public class Server {
                     }
                 });
                 client.thread.start();
-
                 clients.add(client);
             }
         } catch(IOException sockE) {
@@ -47,7 +45,7 @@ public class Server {
     }
 
     private void closeMultipleClients(ArrayList<Client> clients) {
-        for(Client client : clients) {
+        for (Client client : clients) {
             this.closeClient(client);
             clients.remove(client);
         }
@@ -63,5 +61,4 @@ public class Server {
             e.printStackTrace();
         }
     }
-
 }

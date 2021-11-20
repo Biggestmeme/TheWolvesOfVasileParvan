@@ -8,5 +8,4 @@ public interface ClientHandler {
     void closeClient();
     void writeToClient(String message);
     String readFromClient();
-
 }
