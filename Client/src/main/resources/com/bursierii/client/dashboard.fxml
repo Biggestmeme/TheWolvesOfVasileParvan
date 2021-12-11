@@ -1,167 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bursierii.client.controllers.DashboardController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bursierii.client.controllers.DashboardController">
    <children>
-      <Button layoutX="720.0" layoutY="20.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="50.0" style="-fx-background-radius: 100; -fx-background-color: #001d87;" text="AO" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Text layoutX="209.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Wolves of Vasile Pârvan Street" wrappingWidth="489.33673095703125">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="39.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="37.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Tesla_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="171.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="169.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Amazon_Logo.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="312.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="310.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Apple_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="437.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="435.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Google_Logo.svg.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="536.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="534.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Facebook_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="678.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="676.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Adobe_Logo.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="48.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="46.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Microsoft_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="55.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="53.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Pfizer_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="39.0" layoutY="429.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="37.0" layoutY="449.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/McDonalds_Logo.jpg" />
          </image>
       </ImageView>
-      <Button id="tesla_button" layoutX="68.0" layoutY="169.0" mnemonicParsing="false" onAction="#goToStockDetail" text="TSLA" />
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="171.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+      <Button id="tesla_button" layoutX="66.0" layoutY="189.0" mnemonicParsing="false" onAction="#goToStockDetail" text="TSLA" />
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="169.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Coca_Cola_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="296.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="294.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Intel_Logo.svg.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="427.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="425.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Netflix_Logo.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="542.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="540.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Nike_Logo.svg.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="684.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="682.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Paypal_Logo.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="171.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="169.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Toyota_Logo.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="179.0" layoutY="429.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="177.0" layoutY="449.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Sony_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="301.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="299.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Visa_Logo.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="417.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="415.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Walt_Disney_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="543.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="541.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/JP_Morgan_Chase_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="665.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="663.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Home_Depot_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="304.0" layoutY="429.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="302.0" layoutY="449.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Xbox_Logo.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="422.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="420.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Walmart_Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="551.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="549.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Bank_of_America_Logo.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="680.0" layoutY="429.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="678.0" layoutY="449.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Alibaba_Logo.png" />
          </image>
       </ImageView>
-      <Button id="amazon_button" layoutX="196.0" layoutY="169.0" mnemonicParsing="false" onAction="#goToStockDetail" text="AMZN" />
-      <Button id="apple_button" layoutX="322.0" layoutY="169.0" mnemonicParsing="false" onAction="#goToStockDetail" text="AAPL" />
-      <Button id="google_button" layoutX="446.0" layoutY="169.0" mnemonicParsing="false" onAction="#goToStockDetail" text="GOOG" />
-      <Button id="adobe_button" layoutX="699.0" layoutY="169.0" mnemonicParsing="false" onAction="#goToStockDetail" text="ADBE" />
-      <Button id="facebook_button" layoutX="572.0" layoutY="169.0" mnemonicParsing="false" onAction="#goToStockDetail" text="FB" />
-      <Button id="microsoft_button" layoutX="68.0" layoutY="275.0" mnemonicParsing="false" onAction="#goToStockDetail" text="MSFT" />
-      <Button id="coca_cola_button" layoutX="198.0" layoutY="275.0" mnemonicParsing="false" onAction="#goToStockDetail" text="COLA" />
-      <Button id="pfizer_button" layoutX="68.0" layoutY="387.0" mnemonicParsing="false" onAction="#goToStockDetail" text="PFE" />
-      <Button id="toyota_button" layoutX="204.0" layoutY="387.0" mnemonicParsing="false" onAction="#goToStockDetail" text="TM" />
-      <Button id="intel_button" layoutX="322.0" layoutY="275.0" mnemonicParsing="false" onAction="#goToStockDetail" text="INTC" />
-      <Button id="netflix_button" layoutX="446.0" layoutY="275.0" mnemonicParsing="false" onAction="#goToStockDetail" text="NFLX" />
-      <Button id="nike_button" layoutX="572.0" layoutY="275.0" mnemonicParsing="false" onAction="#goToStockDetail" text="NKE" />
-      <Button id="visa_button" layoutX="322.0" layoutY="387.0" mnemonicParsing="false" onAction="#goToStockDetail" text="VISA" />
-      <Button id="disnet_button" layoutX="446.0" layoutY="387.0" mnemonicParsing="false" onAction="#goToStockDetail" text="DIS" />
-      <Button id="jp_morgan_button" layoutX="572.0" layoutY="387.0" mnemonicParsing="false" onAction="#goToStockDetail" text="JPM" />
-      <Button id="home_depot_button" layoutX="699.0" layoutY="387.0" mnemonicParsing="false" onAction="#goToStockDetail" text="HD" />
-      <Button id="paypal_button" layoutX="699.0" layoutY="275.0" mnemonicParsing="false" onAction="#goToStockDetail" text="PYPL" />
-      <Button id="mcdonalds_button" layoutX="68.0" layoutY="490.0" mnemonicParsing="false" onAction="#goToStockDetail" text="MCD" />
-      <Button id="sony_button" layoutX="208.0" layoutY="490.0" mnemonicParsing="false" onAction="#goToStockDetail" text="SONY" />
-      <Button id="xbox_button" layoutX="322.0" layoutY="490.0" mnemonicParsing="false" onAction="#goToStockDetail" text="XBOX" />
-      <Button id="walmart_button" layoutX="446.0" layoutY="490.0" mnemonicParsing="false" onAction="#goToStockDetail" text="WALM" />
-      <Button id="alibaba_button" layoutX="699.0" layoutY="490.0" mnemonicParsing="false" onAction="#goToStockDetail" text="BABA" />
-      <Button id="bank_of_america_button" layoutX="572.0" layoutY="490.0" mnemonicParsing="false" onAction="#goToStockDetail" text="BAC" />
+      <Button id="amazon_button" layoutX="194.0" layoutY="189.0" mnemonicParsing="false" onAction="#goToStockDetail" text="AMZN" />
+      <Button id="apple_button" layoutX="320.0" layoutY="189.0" mnemonicParsing="false" onAction="#goToStockDetail" text="AAPL" />
+      <Button id="google_button" layoutX="444.0" layoutY="189.0" mnemonicParsing="false" onAction="#goToStockDetail" text="GOOG" />
+      <Button id="adobe_button" layoutX="697.0" layoutY="189.0" mnemonicParsing="false" onAction="#goToStockDetail" text="ADBE" />
+      <Button id="facebook_button" layoutX="570.0" layoutY="189.0" mnemonicParsing="false" onAction="#goToStockDetail" text="FB" />
+      <Button id="microsoft_button" layoutX="66.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToStockDetail" text="MSFT" />
+      <Button id="coca_cola_button" layoutX="196.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToStockDetail" text="COLA" />
+      <Button id="pfizer_button" layoutX="66.0" layoutY="407.0" mnemonicParsing="false" onAction="#goToStockDetail" text="PFE" />
+      <Button id="toyota_button" layoutX="202.0" layoutY="407.0" mnemonicParsing="false" onAction="#goToStockDetail" text="TM" />
+      <Button id="intel_button" layoutX="320.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToStockDetail" text="INTC" />
+      <Button id="netflix_button" layoutX="444.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToStockDetail" text="NFLX" />
+      <Button id="nike_button" layoutX="570.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToStockDetail" text="NKE" />
+      <Button id="visa_button" layoutX="320.0" layoutY="407.0" mnemonicParsing="false" onAction="#goToStockDetail" text="VISA" />
+      <Button id="disney_button" layoutX="444.0" layoutY="407.0" mnemonicParsing="false" onAction="#goToStockDetail" text="DIS" />
+      <Button id="jp_morgan_button" layoutX="570.0" layoutY="407.0" mnemonicParsing="false" onAction="#goToStockDetail" text="JPM" />
+      <Button id="home_depot_button" layoutX="697.0" layoutY="407.0" mnemonicParsing="false" onAction="#goToStockDetail" text="HD" />
+      <Button id="paypal_button" layoutX="697.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToStockDetail" text="PYPL" />
+      <Button id="mcdonalds_button" layoutX="66.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToStockDetail" text="MCD" />
+      <Button id="sony_button" layoutX="206.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToStockDetail" text="SONY" />
+      <Button id="xbox_button" layoutX="320.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToStockDetail" text="XBOX" />
+      <Button id="walmart_button" layoutX="444.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToStockDetail" text="WALM" />
+      <Button id="alibaba_button" layoutX="697.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToStockDetail" text="BABA" />
+      <Button id="bank_of_america_button" layoutX="570.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToStockDetail" text="BAC" />
+      <Label alignment="CENTER" prefHeight="115.0" prefWidth="800.0" style="-fx-background-color: #fac441;" text="The Wolves of Vasile Pârvan Street" textFill="#283d3b">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="28.0" />
+         </font>
+      </Label>
+      <Button layoutX="707.0" layoutY="35.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="50.0" style="-fx-background-radius: 100; -fx-background-color: #001d87;" text="AO" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
