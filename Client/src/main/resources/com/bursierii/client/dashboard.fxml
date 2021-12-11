@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bursierii.client.controllers.DashboardController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bursierii.client.DashboardController">
    <children>
       <ImageView fitHeight="62.0" fitWidth="101.0" layoutX="37.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -153,7 +153,7 @@
       <Button id="walmart_button" layoutX="444.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToStockDetail" text="WALM" />
       <Button id="alibaba_button" layoutX="697.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToStockDetail" text="BABA" />
       <Button id="bank_of_america_button" layoutX="570.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToStockDetail" text="BAC" />
-      <Label alignment="CENTER" prefHeight="115.0" prefWidth="800.0" style="-fx-background-color: #fac441;" text="The Wolves of Vasile Pârvan Street" textFill="#283d3b">
+      <Label fx:id="title" alignment="CENTER" prefHeight="115.0" prefWidth="800.0" style="-fx-background-color: #fac441;" text="The Wolves of Vasile Pârvan Street" textFill="#283d3b">
          <font>
             <Font name="Arial Rounded MT Bold" size="28.0" />
          </font>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #b3becf;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bursierii.client.controllers.SignupController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #b3becf;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bursierii.client.SignupController">
    <children>
       <Label layoutX="85.0" layoutY="166.0" text="First Name">
          <font>

@@ -10,6 +10,6 @@ module com.bursierii.client {
 
     opens com.bursierii.client to javafx.fxml;
     exports com.bursierii.client;
-    exports com.bursierii.client.controllers;
-    opens com.bursierii.client.controllers to javafx.fxml;
+//    exports com.bursierii.client.controllers;
+//    opens com.bursierii.client.controllers to javafx.fxml;
 }
