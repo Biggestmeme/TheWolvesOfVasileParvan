@@ -1,9 +1,12 @@
-package com.bursierii.client.controllers;
+package com.bursierii.client;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class SignupController {
+
+
+
     @FXML
     public void onSignup(ActionEvent event){
         System.out.println("onSignup");

@@ -1,4 +1,4 @@
-package com.bursierii.client.controllers;
+package com.bursierii.client;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
