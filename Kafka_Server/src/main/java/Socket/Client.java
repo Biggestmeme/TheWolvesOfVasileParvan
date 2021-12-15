@@ -1,20 +1,19 @@
-package Sockets;
-
-import jdk.jshell.spi.ExecutionControl;
+package Socket;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
 
-public class Client implements ClientHandler {
 
+public class Client {
     public Socket socket;
     public Thread thread;
-    public PrintWriter output; 
+    public PrintWriter output;
     public BufferedReader input;
+    public String clientID;
+
 
     public void setSocket(Socket socket) {
         this.socket = socket;
@@ -26,26 +25,26 @@ public class Client implements ClientHandler {
         }
     }
 
+
     //here happens the logic
-    @Override
-    public void call(ArrayList<Client> clients, Client client) {
+    public String call(Client client) {
         System.out.println(client.readFromClient());
-        clients.remove(client);
         client.closeClient();
+
+        return "ID";
     }
 
-    @Override
     public void closeClient() {
         try {
+
             this.socket.close();
             this.input.close();
             this.output.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    @Override
     public String readFromClient() {
         try {
             return this.input.readLine();
@@ -55,7 +54,6 @@ public class Client implements ClientHandler {
         return null;
     }
 
-    @Override
     public void writeToClient(String message) {
         this.output.println(message);
     }
