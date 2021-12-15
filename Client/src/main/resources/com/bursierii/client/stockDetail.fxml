@@ -23,7 +23,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Text layoutX="306.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numele Stockului" wrappingWidth="271.73663330078125">
+      <Text id="stockName" fx:id="stockName" layoutX="306.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="271.73663330078125">
          <font>
             <Font size="28.0" />
          </font>
@@ -36,24 +36,24 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Button layoutX="313.0" layoutY="196.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #00ff00;" text="BUY" textFill="WHITE">
+      <Button layoutX="313.0" layoutY="196.0" mnemonicParsing="false" onAction="#Buy" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #00ff00;" text="BUY" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="442.0" layoutY="196.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #ff0000;" text="SELL" textFill="WHITE">
+      <Button layoutX="442.0" layoutY="196.0" mnemonicParsing="false" onAction="#Sell" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #ff0000;" text="SELL" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
       <Button layoutX="36.0" layoutY="45.0" mnemonicParsing="false" text="Back" />
       <ListView layoutX="415.0" layoutY="242.0" prefHeight="231.0" prefWidth="384.0" />
-      <Text layoutX="421.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="500" wrappingWidth="25.00616455078125">
+      <Text id="price" fx:id="price" layoutX="421.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="500" wrappingWidth="25.00616455078125">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
       <Text layoutX="415.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
-      <Text layoutX="379.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+      <Text  layoutX="379.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
    </children>
 </AnchorPane>

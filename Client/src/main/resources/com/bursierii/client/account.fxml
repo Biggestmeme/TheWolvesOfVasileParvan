@@ -9,11 +9,11 @@
 
 <AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bursierii.client.AccountController">
    <children>
-      <Label layoutX="25.0" layoutY="126.0" text="John">
+      <Label id="firstName" fx:id="firstName" layoutX="25.0" layoutY="126.0">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label layoutX="78.0" layoutY="125.0" text="Doe">
+      <Label id="lastName" fx:id="lastName" layoutX="78.0" layoutY="125.0">
          <font>
             <Font size="20.0" />
          </font></Label>
@@ -27,17 +27,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Label layoutX="25.0" layoutY="156.0" text="\@johndoe">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
       <Label layoutX="345.0" layoutY="127.0" text="Balance: ">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="360.0" layoutY="156.0" text="500$">
+      <Label id="moneyInDaBank" fx:id="moneyInDaBank" layoutX="360.0" layoutY="156.0" text="0$">
          <font>
             <Font size="18.0" />
          </font>

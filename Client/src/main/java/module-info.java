@@ -7,6 +7,7 @@ module com.bursierii.client {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires org.json;
+    requires kafka.clients;
 
     opens com.bursierii.client to javafx.fxml;
     exports com.bursierii.client;
