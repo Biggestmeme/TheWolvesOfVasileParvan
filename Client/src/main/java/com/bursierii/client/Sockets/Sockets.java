@@ -4,93 +4,53 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.Callable;
 
-public class Sockets implements Runnable {
-    private ServerSocket serverSocket;
-    private Socket clientSocket;
-    private PrintWriter out;
-    private BufferedReader in;
+public class Sockets {
+    private Socket serverSocket;
+    private PrintWriter output;
+    private BufferedReader input;
 
-    private int PORT;
-    private String IPADDRESS;
-
-
-    public void run() {
-
-    }
-
-
-
-    public void connectToServer(String IPADDRESS,int PORT) {
+    public Sockets(String IP, int PORT) {
         try {
-            this.clientSocket = new Socket(IPADDRESS,PORT);
-            this.out = new PrintWriter(clientSocket.getOutputStream(), true);
-            this.in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        } catch(IOException sockE) {
-            System.out.println(sockE);
-        }
-    }
-
-    public void createServer(int PORT, Object clientHandler) {
-        try {
-            Socket connectedClients;
-            this.serverSocket = new ServerSocket(PORT);
-            while(true) {
-                connectedClients = this.serverSocket.accept();
-                PrintWriter out = new PrintWriter(connectedClients.getOutputStream(), true);
-                BufferedReader in = new BufferedReader(new InputStreamReader(connectedClients.getInputStream()));
-                Thread clientThread = new Thread(new Runnable() {
-                    public void run() {
-                        try {
-                            String a = in.readLine();
-                            System.out.println("Client says : " + a );
-                        } catch(IOException e) {
-                            System.out.println(e);
-                        }
-                    }
-                });
-                clientThread.start();
-            }
-
-        } catch(IOException sockE) {
-            System.out.println(sockE);
-        } catch (Exception e) {
+            this.serverSocket = new Socket(IP,PORT);
+            this.setSocket();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void closeSocket() {
+    private void setSocket() {
         try {
-            if (this.serverSocket != null) {
-                this.serverSocket.close();
-            }
-            if(this.clientSocket != null) {
-                this.clientSocket.close();
-            }
-        } catch(IOException sockE) {
-            System.out.println(sockE);
-        } finally {
-            this.closeIO();
+            this.input = new BufferedReader(new InputStreamReader(this.serverSocket.getInputStream()));
+            this.output = new PrintWriter(this.serverSocket.getOutputStream(), true);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    private void createServerSocket(int PORT)   {
+    public String readFromClient() {
         try {
-            this.serverSocket = new ServerSocket(PORT);
-        } catch(IOException sockE) {
-            System.out.println(sockE);
+            return this.input.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void writeToClient(String message) {
+        this.output.println(message);
+    }
+
+    public void closeClient() {
+        try {
+            this.input.close();
+            this.output.close();
+            this.serverSocket.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    private void closeIO() {
-        try {
-            this.out.close();
-            this.in.close();
-        } catch(IOException ioe) {
-            System.out.println(ioe);
-        }
-    }
 }

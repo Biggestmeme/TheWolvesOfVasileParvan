@@ -1,5 +1,8 @@
 package com.bursierii.client;
 
+import com.bursierii.client.Config.Config;
+import com.bursierii.client.Services.StockService;
+import com.bursierii.client.Sockets.Sockets;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +26,8 @@ public class DashboardController {
         String company = id.substring(0, id.length()-7);
         System.out.println(company);
 
+        StockService.getStockInfo(company);
+
         try{
             Stage stage = (Stage)title.getScene().getWindow();
             Parent viewClientPage = FXMLLoader.load(getClass().getResource("stockDetail.fxml"));
@@ -36,4 +41,16 @@ public class DashboardController {
 
     }
 
+    public void goToProfile(ActionEvent actionEvent) {
+        try{
+            Stage stage = (Stage)title.getScene().getWindow();
+            Parent viewClientPage = FXMLLoader.load(getClass().getResource("account.fxml"));
+            Scene scene = new Scene(viewClientPage);
+            stage.setScene(scene);
+            stage.show();
+
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+    }
 }
