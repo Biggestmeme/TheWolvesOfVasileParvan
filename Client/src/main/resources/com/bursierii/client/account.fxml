@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -37,13 +39,24 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button id="back_to_dashboard_button" layoutX="568.0" layoutY="140.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="Deposit" />
-      <Button id="back_to_dashboard_button" layoutX="681.0" layoutY="140.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="Withdraw" />
+      <Button id="back_to_dashboard_button" layoutX="568.0" layoutY="140.0" mnemonicParsing="false" onAction="#goToDeposit" prefHeight="32.0" prefWidth="70.0" text="Deposit" />
+      <Button id="back_to_dashboard_button" layoutX="681.0" layoutY="140.0" mnemonicParsing="false" onAction="#goToWithdraw" prefHeight="32.0" prefWidth="70.0" text="Withdraw" />
       <TabPane layoutX="-1.0" layoutY="195.0" prefHeight="354.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab text="My Stocks">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="stocksTable" layoutY="7.0" prefHeight="318.0" prefWidth="800.0">
+                          <columns>
+                            <TableColumn fx:id="Ticker" prefWidth="151.19998472929" text="Ticker" />
+                            <TableColumn fx:id="Company" prefWidth="176.00001525878906" text="Company" />
+                              <TableColumn fx:id="Amount" prefWidth="177.5999755859375" text="Amount" />
+                              <TableColumn fx:id="Price" prefWidth="147.20001220703125" text="Price" />
+                              <TableColumn fx:id="Date" prefWidth="151.20001220703125" text="Date" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
                </content>
             </Tab>
             <Tab text="Pending transactions">
@@ -53,6 +66,7 @@
             </Tab>
          </tabs>
       </TabPane>
-      <Button id="back_to_dashboard_button" layoutX="14.0" layoutY="42.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="Back" />
+      <Button id="back_to_dashboard_button" layoutX="14.0" layoutY="42.0" mnemonicParsing="false" onAction="#goBack" prefHeight="32.0" prefWidth="70.0" text="Back" />
+      <Button layoutX="477.0" layoutY="144.0" mnemonicParsing="false" onAction="#updateStock" text="Update" />
    </children>
 </AnchorPane>
