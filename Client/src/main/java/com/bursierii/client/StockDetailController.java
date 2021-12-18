@@ -36,9 +36,10 @@ public class StockDetailController {
         //adauga checkuri daca poate sa vanda sau sa cumpere
 
         //ne prefacem ca avem field pt cantitate
-        int quantity = 4;
+        int quantity = 10;
         String buyRequest = createBuyRequest(quantity,StockService.price);
         StockService.kafka.sendMessage(StockService.ticker+"-receiver", SHA256.encryptString(buyRequest),buyRequest);
+        System.out.println("Send Buy Request");
     }
 
     @FXML
@@ -46,7 +47,7 @@ public class StockDetailController {
         //adauga checkuri daca poate sa vanda sau sa cumpere
 
         //ne prefacem ca avem field pt cantitate
-        int quantity =8;
+        int quantity =10;
         String buyRequest = createSellRequest(quantity,StockService.price);
         StockService.kafka.sendMessage(StockService.ticker+"-receiver", SHA256.encryptString(buyRequest),buyRequest);
     }
@@ -61,6 +62,7 @@ public class StockDetailController {
 
     public void goToProfile(ActionEvent actionEvent) {
         try{
+            UserService.getProfile();
             Stage stage = (Stage)stockName.getScene().getWindow();
             Parent viewClientPage = FXMLLoader.load(getClass().getResource("account.fxml"));
             Scene scene = new Scene(viewClientPage);
@@ -74,6 +76,7 @@ public class StockDetailController {
 
     @FXML
     public void goBack() throws IOException {
+        StockService.resetStock();
         Stage stage = (Stage)stockName.getScene().getWindow();
         Parent viewClientPage = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
         Scene scene = new Scene(viewClientPage);

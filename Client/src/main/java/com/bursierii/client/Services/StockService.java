@@ -3,6 +3,7 @@ package com.bursierii.client.Services;
 import com.bursierii.client.Config.Config;
 import com.bursierii.client.Kafka.Kafka;
 import com.bursierii.client.Sockets.Sockets;
+import com.bursierii.client.Stock;
 import org.json.JSONObject;
 
 public class StockService {
@@ -19,6 +20,7 @@ public class StockService {
 
     }
 
+
     public static JSONObject getStockInfo(String companyName) {
         Sockets client = new Sockets(Config.STOCK_SERVER_IP,Config.STOCK_SERVER_PORT);
         client.writeToClient("{action:\"Get_Stock_Info\",company:\""+companyName+"\"}");
@@ -27,5 +29,11 @@ public class StockService {
         System.out.println(response.toString());
         StockService.setStock(response);
         return response;
+    }
+
+    public static void resetStock() {
+        StockService.name = "";
+        StockService.price = 0;
+        StockService.ticker = "";
     }
 }

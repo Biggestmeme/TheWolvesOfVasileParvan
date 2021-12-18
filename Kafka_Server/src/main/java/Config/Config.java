@@ -14,6 +14,7 @@ public class Config {
     public static String MONGO_SELL_ORDERS_COLLECTION = "Sell_Orders";
 
     public static int STOCK_SOCKET_SERVER_PORT = 64502;
+    public static int USER_DATA_PORT = 64515;
     public static int ClientAuthPort = 64501;
     public static String MONGO_USER_COLLECTION = "Users";
 

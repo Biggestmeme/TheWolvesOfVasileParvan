@@ -2,6 +2,7 @@ package com.bursierii.client;
 
 import com.bursierii.client.Config.Config;
 import com.bursierii.client.Services.StockService;
+import com.bursierii.client.Services.UserService;
 import com.bursierii.client.Sockets.Sockets;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,6 +44,7 @@ public class DashboardController {
 
     public void goToProfile(ActionEvent actionEvent) {
         try{
+            UserService.getProfile();
             Stage stage = (Stage)title.getScene().getWindow();
             Parent viewClientPage = FXMLLoader.load(getClass().getResource("account.fxml"));
             Scene scene = new Scene(viewClientPage);

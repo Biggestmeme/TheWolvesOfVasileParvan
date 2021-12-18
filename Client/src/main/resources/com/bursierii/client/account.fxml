@@ -61,7 +61,19 @@
             </Tab>
             <Tab text="Pending transactions">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="pendingTable" layoutY="7.0" prefHeight="318.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn fx:id="pendingTicker" prefWidth="100.80002135038376" text="Ticker" />
+                              <TableColumn fx:id="pendingPrice" prefWidth="144.79998779296875" text="Price" />
+                              <TableColumn fx:id="pendingAmount" prefWidth="128.7999725341797" text="Amount" />
+                              <TableColumn fx:id="pendingCompany" prefWidth="122.39999389648438" text="Company" />
+                              <TableColumn fx:id="pendingDate" prefWidth="155.20001220703125" text="Date" />
+                              <TableColumn fx:id="pendingAction" prefWidth="148.00006103515625" text="Action" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
                </content>
             </Tab>
          </tabs>

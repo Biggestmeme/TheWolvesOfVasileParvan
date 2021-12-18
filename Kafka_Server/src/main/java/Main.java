@@ -13,6 +13,7 @@ import Config.*;
 import Mongo.Mongo;
 import Socket.Client;
 import Socket.Server;
+import UserData.UserDataHandler;
 import org.bson.types.ObjectId;
 import org.json.JSONObject;
 
@@ -51,6 +52,19 @@ public class Main {
         authThread.start();
     }
 
+    public static void startUserDataServer() {
+        Thread userDataThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Auth server started...");
+                Server<Client> userDataServer = new Server<Client>(Config.USER_DATA_PORT,new UserDataHandler());
+
+            }
+        });
+        userDataThread.start();
+    }
+
+
     public static void startEverything() {
         StockUtility stockUtility = new StockUtility();
         HashMap<String,ArrayList<Thread>> stocksThread = new HashMap<String, ArrayList<Thread>>();
@@ -58,6 +72,7 @@ public class Main {
 
         Main.startAuthServer();
         Main.startStockSocketServer();
+        Main.startUserDataServer();
 
         for(String ticker : stockUtility.getTickers()) {
             System.out.println("Current Stock BZL : " + ticker);

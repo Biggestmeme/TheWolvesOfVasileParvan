@@ -25,6 +25,7 @@ public class Sockets {
             this.input = new BufferedReader(new InputStreamReader(this.serverSocket.getInputStream()));
             this.output = new PrintWriter(this.serverSocket.getOutputStream(), true);
         } catch (IOException e) {
+            System.out.println("SDFASDCFASENCFASIENFCAESCFAMSLKECMFASEFC");
             e.printStackTrace();
         }
     }
