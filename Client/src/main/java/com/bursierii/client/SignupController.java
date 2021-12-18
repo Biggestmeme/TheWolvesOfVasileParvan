@@ -5,11 +5,16 @@ import com.bursierii.client.Encryption.SHA256;
 import com.bursierii.client.Sockets.Sockets;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.net.Socket;
 import java.util.Base64;
 
@@ -53,8 +58,12 @@ public class SignupController {
     }
 
     @FXML
-    public void goBack(ActionEvent event){
-        System.out.println("goBack");
+    public void goBack(ActionEvent event) throws IOException {
+        Stage stage = (Stage)fnameInput.getScene().getWindow();
+        Parent viewClientPage = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Scene scene = new Scene(viewClientPage);
+        stage.setScene(scene);
+        stage.show();
     }
 
 

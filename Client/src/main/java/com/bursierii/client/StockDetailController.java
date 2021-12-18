@@ -5,9 +5,14 @@ import com.bursierii.client.Services.StockService;
 import com.bursierii.client.Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.security.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -54,5 +59,25 @@ public class StockDetailController {
         return "{action:\"Sell_Order\",company:\""+StockService.name+"\",ticker:\""+StockService.ticker+"\",amount:"+quantity+",price:"+price+",timestamp:\""+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime())+"\",user:\""+UserService.userID+"\"}";
     }
 
+    public void goToProfile(ActionEvent actionEvent) {
+        try{
+            Stage stage = (Stage)stockName.getScene().getWindow();
+            Parent viewClientPage = FXMLLoader.load(getClass().getResource("account.fxml"));
+            Scene scene = new Scene(viewClientPage);
+            stage.setScene(scene);
+            stage.show();
 
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void goBack() throws IOException {
+        Stage stage = (Stage)stockName.getScene().getWindow();
+        Parent viewClientPage = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+        Scene scene = new Scene(viewClientPage);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
