@@ -64,6 +64,9 @@ public class AccountController {
     private TableView<Stock> pendingTable;
 
     @FXML
+    private TableView<Stock> historyTable;
+
+    @FXML
     private TableColumn<Stock, String> pendingTicker;
 
     @FXML
@@ -81,11 +84,35 @@ public class AccountController {
     @FXML
     private TableColumn<Stock, String> pendingAction;
 
+    @FXML
+    private TableColumn<Stock, String> historyTicker;
+
+    @FXML
+    private TableColumn<Stock, String> historyCompany;
+
+    @FXML
+    private TableColumn<Stock, Integer> historyAmount;
+
+    @FXML
+    private TableColumn<Stock, Integer> historyPrice;
+
+    @FXML
+    private TableColumn<Stock, String> historyDate;
+
+    @FXML
+    private TableColumn<Stock, String> historyAction;
+
+    @FXML
+    private Button profileButton;
+
     ObservableList<Stock> list;
     ObservableList<Stock> pendinglist;
+    ObservableList<Stock> historylist;
 
     @FXML
     public void initialize() {
+        String initials =String.valueOf(UserService.firstName.toUpperCase().charAt(0))+String.valueOf(UserService.lastName.toUpperCase().charAt(0));
+        profileButton.setText(initials);
         ArrayList<Stock> listdata = new ArrayList<Stock>();
         if (UserService.owned_stocks != null) {
             for (int i=0;i<UserService.owned_stocks.length();i++){
@@ -99,11 +126,19 @@ public class AccountController {
         if (UserService.pending_orders != null) {
             for (int i=0;i<UserService.pending_orders.length();i++){
                 JSONObject temp = UserService.pending_orders.getJSONObject(i);
-                System.out.println("PENDING : "+temp.toString());
                 pendinglistdata.add(new Stock(temp.getString("ticker"),temp.getString("company"),temp.getInt("amount"),temp.getDouble("price"),temp.getString("timestamp"),temp.getString("action")));
             }
         }
         pendinglist = FXCollections.observableArrayList(pendinglistdata);
+
+        ArrayList<Stock> historylistdata = new ArrayList<Stock>();
+        if (UserService.transaction_history != null) {
+            for (int i=0;i<UserService.transaction_history.length();i++){
+                JSONObject temp = UserService.transaction_history.getJSONObject(i);
+                historylistdata.add(new Stock(temp.getString("ticker"),temp.getString("company"),temp.getInt("amount"),temp.getDouble("price"),temp.getString("timestamp"),temp.getString("action")));
+            }
+        }
+        historylist = FXCollections.observableArrayList(historylistdata);
 
         firstName.setText(UserService.firstName);
         lastName.setText(UserService.lastName);
@@ -120,9 +155,18 @@ public class AccountController {
         pendingAmount.setCellValueFactory(new PropertyValueFactory<Stock,Integer>("Amount"));
         pendingPrice.setCellValueFactory(new PropertyValueFactory<Stock,Integer>("Price"));
         pendingDate.setCellValueFactory(new PropertyValueFactory<Stock,String>("Date"));
+        pendingAction.setCellValueFactory(new PropertyValueFactory<Stock,String>("Action"));
+
+        historyTicker.setCellValueFactory(new PropertyValueFactory<Stock,String>("Ticker"));
+        historyCompany.setCellValueFactory(new PropertyValueFactory<Stock,String>("Company"));
+        historyAmount.setCellValueFactory(new PropertyValueFactory<Stock,Integer>("Amount"));
+        historyPrice.setCellValueFactory(new PropertyValueFactory<Stock,Integer>("Price"));
+        historyDate.setCellValueFactory(new PropertyValueFactory<Stock,String>("Date"));
+        historyAction.setCellValueFactory(new PropertyValueFactory<Stock,String>("Action"));
 
         stocksTable.setItems(list);
         pendingTable.setItems(pendinglist);
+        historyTable.setItems(historylist);
 
         //pendingTable.getSelectionModel().getSelectedItem().getPrice()
         setDoubleClickActionOnTable(pendingTable);

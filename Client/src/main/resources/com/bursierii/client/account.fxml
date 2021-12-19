@@ -24,7 +24,7 @@
             <Font name="Arial Rounded MT Bold" size="28.0" />
          </font>
       </Label>
-      <Button layoutX="716.0" layoutY="35.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="50.0" style="-fx-background-radius: 100; -fx-background-color: #001d87;" text="AO" textFill="WHITE">
+      <Button fx:id="profileButton" layoutX="716.0" layoutY="35.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="50.0" style="-fx-background-radius: 100; -fx-background-color: #001d87;" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -76,9 +76,26 @@
                      </children></AnchorPane>
                </content>
             </Tab>
+            <Tab text="Transactions History">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="historyTable" layoutY="7.0" prefHeight="318.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn fx:id="historyTicker" prefWidth="100.80002135038376" text="Ticker" />
+                              <TableColumn fx:id="historyPrice" prefWidth="144.79998779296875" text="Price" />
+                              <TableColumn fx:id="historyAmount" prefWidth="128.7999725341797" text="Amount" />
+                              <TableColumn fx:id="historyCompany" prefWidth="122.39999389648438" text="Company" />
+                              <TableColumn fx:id="historyDate" prefWidth="155.20001220703125" text="Date" />
+                              <TableColumn fx:id="historyAction" prefWidth="148.00006103515625" text="Action" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
          </tabs>
       </TabPane>
       <Button id="back_to_dashboard_button" layoutX="14.0" layoutY="42.0" mnemonicParsing="false" onAction="#goBack" prefHeight="32.0" prefWidth="70.0" text="Back" />
-      <Button layoutX="477.0" layoutY="144.0" mnemonicParsing="false" onAction="#updateStock" text="Update" />
    </children>
 </AnchorPane>
