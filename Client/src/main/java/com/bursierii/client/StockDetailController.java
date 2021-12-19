@@ -8,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -22,11 +24,17 @@ public class StockDetailController {
     private Text stockName;
 
     @FXML
-    private Text price;
+    private TextField price;
+
+    @FXML
+    private Button profileButton;
+
 
 
     @FXML
     public void initialize() {
+        String initials =String.valueOf(UserService.firstName.toUpperCase().charAt(0))+String.valueOf(UserService.lastName.toUpperCase().charAt(0));
+        profileButton.setText(initials);
         stockName.setText(StockService.name);
         price.setText(String.valueOf(StockService.price));
     }
@@ -36,9 +44,10 @@ public class StockDetailController {
         //adauga checkuri daca poate sa vanda sau sa cumpere
 
         //ne prefacem ca avem field pt cantitate
-        int quantity = 4;
+        int quantity = 10;
         String buyRequest = createBuyRequest(quantity,StockService.price);
         StockService.kafka.sendMessage(StockService.ticker+"-receiver", SHA256.encryptString(buyRequest),buyRequest);
+        System.out.println("Send Buy Request");
     }
 
     @FXML
@@ -46,7 +55,7 @@ public class StockDetailController {
         //adauga checkuri daca poate sa vanda sau sa cumpere
 
         //ne prefacem ca avem field pt cantitate
-        int quantity =8;
+        int quantity =10;
         String buyRequest = createSellRequest(quantity,StockService.price);
         StockService.kafka.sendMessage(StockService.ticker+"-receiver", SHA256.encryptString(buyRequest),buyRequest);
     }
@@ -61,6 +70,7 @@ public class StockDetailController {
 
     public void goToProfile(ActionEvent actionEvent) {
         try{
+            UserService.getProfile();
             Stage stage = (Stage)stockName.getScene().getWindow();
             Parent viewClientPage = FXMLLoader.load(getClass().getResource("account.fxml"));
             Scene scene = new Scene(viewClientPage);
@@ -74,6 +84,7 @@ public class StockDetailController {
 
     @FXML
     public void goBack() throws IOException {
+        StockService.resetStock();
         Stage stage = (Stage)stockName.getScene().getWindow();
         Parent viewClientPage = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
         Scene scene = new Scene(viewClientPage);

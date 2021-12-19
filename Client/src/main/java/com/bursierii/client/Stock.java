@@ -4,20 +4,25 @@ public class Stock {
     private String Ticker;
     private String Company;
     private int Amount;
-    private int Price;
+    private double Price;
     private String Date;
+    private String Action;
 
-    public Stock(String ticker, String company, int amount, int price, String date) {
+    public Stock(String ticker, String company, int amount, double price, String date,String action) {
         Ticker = ticker;
         Company = company;
         Amount = amount;
         Price = price;
         Date = date;
+        Action = action;
     }
+
 
     public String getTicker() {
         return Ticker;
     }
+
+    public String getAction() {return Action;}
 
     public String getCompany() {
         return Company;
@@ -27,7 +32,7 @@ public class Stock {
         return Amount;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return Price;
     }
 
