@@ -24,7 +24,7 @@ public class Config {
     public static String ACCOUNT_CREATED = "Account created";
     public  static String UNEXPECTED_ERROR = "Unexpected Error";
 
-    public static int PARTITIONS_PER_STOCK = 10;
+    public static int PARTITIONS_PER_STOCK = 1;
     public static short REPLICATION_FACTOR_PER_STOCK = 1;
 
 }

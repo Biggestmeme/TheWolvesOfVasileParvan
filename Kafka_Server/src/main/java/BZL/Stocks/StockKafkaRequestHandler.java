@@ -18,6 +18,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class StockKafkaRequestHandler implements KafkaMessageHandler {
     private Kafka kafka;
@@ -28,42 +31,58 @@ public class StockKafkaRequestHandler implements KafkaMessageHandler {
 
 
     public StockKafkaRequestHandler(String ticker) {
-        this.ticker = ticker;
+        this.ticker = ticker.substring(0,4);
         this.kafka = new Kafka(Config.KAFKA_ADDRESS,Config.KAFKA_GROUP_ID);
        // this.mongo = new Mongo(Config.MONGO_URI,Config.MONGO_DATABASE_NAME);
+        this.scheduleResolveBuyOrder(StockKafkaRequestHandler.BuyOrders);
+       this.scheduleResolveSellOrder(StockKafkaRequestHandler.SellOrders);
+    }
 
-
-
-        Thread controllThreads = new Thread(new Runnable() {
-            @Override
+    public void scheduleResolveBuyOrder(ConcurrentHashMap<String,JSONObject> orders) {
+        Runnable helloRunnable = new Runnable() {
             public void run() {
-                while(true) {
-                    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-                    String command = myObj.nextLine();  // Read user input
-                    if (command.equals("Print Stock")) {
-                        System.out.println("Buy Or Sell : ");
-                        String closingStock = myObj.nextLine();  // Read user input
-                        if(closingStock.equals("Buy")) {
-                            for (Map.Entry<String, JSONObject> entry : StockKafkaRequestHandler.BuyOrders.entrySet()) {
-                                String key = entry.getKey().toString();
-                                JSONObject value = entry.getValue();
-                                System.out.println("key, " + key + " value " + value.toString());
-                            }
-                        }
-                        if(closingStock.equals("Sell")) {
-                            for (Map.Entry<String, JSONObject> entry : StockKafkaRequestHandler.SellOrders.entrySet()) {
-                                String key = entry.getKey().toString();
-                                JSONObject value = entry.getValue();
-                                System.out.println("key, " + key + " value " + value.toString());
-                            }
-                        }
-
+                System.out.println("Buy : " + orders.values().size());
+                for(JSONObject request : orders.values()) {
+                    System.out.println("Resolving for : " + request.toString());
+                    if(resolveBuyOrder(request)) {
+                        MongoService.db.updateOne(Config.MONGO_USER_COLLECTION,"$push",
+                                new JSONObject("{_id:\""+request.getString("user")+"\"}"),
+                                new JSONObject("{transaction_history:"+request.toString()+"}"));
+                        //update user stocks
+                        updateUserOwnedStocks(request);
+                        System.out.println("SENDING MESSAGE TO THIS TICKER : "+ ticker+"-sender");
+                        kafka.sendMessage(ticker+"-sender",hashString(request.toString()),request.toString());
                     }
                 }
             }
-        });
-        controllThreads.start();
+        };
 
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.scheduleAtFixedRate(helloRunnable, 0, 5, TimeUnit.SECONDS);
+    }
+
+    public void scheduleResolveSellOrder(ConcurrentHashMap<String,JSONObject> orders) {
+        Runnable helloRunnable = new Runnable() {
+            public void run() {
+                System.out.println("Sell : " + orders.values().size());
+                for (JSONObject request : orders.values()) {
+                    System.out.println("Resolving for : " + request.toString());
+                    if (resolveSellOrder(request)) {
+                        //update user
+                        MongoService.db.updateOne(Config.MONGO_USER_COLLECTION, "$push",
+                                new JSONObject("{_id:\"" + request.getString("user") + "\"}"),
+                                new JSONObject("{transaction_history:" + request.toString() + "}"));
+                        MongoService.db.updateOne(Config.MONGO_USER_COLLECTION, "$pull", new JSONObject("{_id:\"" + request.getString("user") + "\"}"), new JSONObject("{pending_orders:{timestamp:\"" + request.getString("timestamp") + "\"}}"));
+                        System.out.println("SENDING MESSAGE TO THIS TICKER : " + ticker + "-sender");
+                        kafka.sendMessage(ticker + "-sender", hashString(request.toString()), request.toString());
+                        updateUserBalance(request, request);
+                    }
+                }
+            }
+        };
+
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.scheduleAtFixedRate(helloRunnable, 0, 5, TimeUnit.SECONDS);
     }
 
     public void handleMessage(ConsumerRecord<String, String> record) {
@@ -80,36 +99,38 @@ public class StockKafkaRequestHandler implements KafkaMessageHandler {
 
         if(request.getString("action").equals("Buy_Order")) {
 
-            if(resolveBuyOrder(request)) {
-
-                MongoService.db.updateOne(Config.MONGO_USER_COLLECTION,"$push",
-                        new JSONObject("{_id:\""+request.getString("user")+"\"}"),
-                        new JSONObject("{transaction_history:"+request.toString()+"}"));
-                //update user stocks
-                updateUserOwnedStocks(request);
-                kafka.sendMessage(ticker+"-sender",hashString(request.toString()),request.toString());
-            }
-            else {
+//            if(resolveBuyOrder(request)) {
+//
+//                MongoService.db.updateOne(Config.MONGO_USER_COLLECTION,"$push",
+//                        new JSONObject("{_id:\""+request.getString("user")+"\"}"),
+//                        new JSONObject("{transaction_history:"+request.toString()+"}"));
+//                //update user stocks
+//                updateUserOwnedStocks(request);
+//                System.out.println("SENDING MESSAGE TO THIS TICKER : "+ ticker+"-sender");
+//                kafka.sendMessage(ticker+"-sender",hashString(request.toString()),request.toString());
+//            }
+//            else {
                 StockKafkaRequestHandler.BuyOrders.put(Base64.getEncoder().encodeToString(hashString(request.toString()).getBytes()),request);
                 MongoService.db.updateOne(Config.MONGO_USER_COLLECTION,"$push",new JSONObject("{_id:\""+request.getString("user")+"\"}"), new JSONObject("{pending_orders:"+ request.toString()+"}"));
                 MongoService.db.insertOne(Config.MONGO_BUY_ORDERS_COLLECTION,request);
-            }
-            updateUserBalance(request,request);
+//            }
+                updateUserBalance(request,request);
 
         }
         else if (request.getString("action").equals("Sell_Order")) {
             //update user stocks
 
-            if(resolveSellOrder(request)) {
-                //update user
-                MongoService.db.updateOne(Config.MONGO_USER_COLLECTION,"$push",
-                        new JSONObject("{_id:\""+request.getString("user")+"\"}"),
-                        new JSONObject("{transaction_history:"+request.toString()+"}"));
-                MongoService.db.updateOne(Config.MONGO_USER_COLLECTION,"$pull",new JSONObject("{_id:\""+request.getString("user")+"\"}"), new JSONObject("{pending_orders:{timestamp:\""+request.getString("timestamp")+"\"}}"));
-                kafka.sendMessage(ticker+"-sender",hashString(request.toString()),request.toString());
-                updateUserBalance(request,request);
-            }
-            else {
+//            if(resolveSellOrder(request)) {
+//                //update user
+//                MongoService.db.updateOne(Config.MONGO_USER_COLLECTION,"$push",
+//                        new JSONObject("{_id:\""+request.getString("user")+"\"}"),
+//                        new JSONObject("{transaction_history:"+request.toString()+"}"));
+//                MongoService.db.updateOne(Config.MONGO_USER_COLLECTION,"$pull",new JSONObject("{_id:\""+request.getString("user")+"\"}"), new JSONObject("{pending_orders:{timestamp:\""+request.getString("timestamp")+"\"}}"));
+//                System.out.println("SENDING MESSAGE TO THIS TICKER : "+ ticker+"-sender");
+//                kafka.sendMessage(ticker+"-sender",hashString(request.toString()),request.toString());
+//                updateUserBalance(request,request);
+        //    }
+//            else {
                 StockKafkaRequestHandler.SellOrders.put(Base64.getEncoder().encodeToString(hashString(request.toString()).getBytes()),request);
                 //MongoService.db.updateOne(Config.MONGO_USER_COLLECTION,"$push",new JSONObject("{_id:\""+request.getString("user")+"\"}"), new JSONObject("{pending_orders:"+ request.toString()+"}"));
                 MongoService.db.insertOne(Config.MONGO_SELL_ORDERS_COLLECTION,request);
@@ -117,7 +138,7 @@ public class StockKafkaRequestHandler implements KafkaMessageHandler {
                         new JSONObject("{_id:\""+request.getString("user")+"\"}"),
                         new JSONObject("{pending_orders:"+request.toString()+"}"));
                 updateUserOwnedStocks(request);
-            }
+//            }
         }
         else if(request.getString("action").equals("Pending_Update")) {
             resolvePendingUpdate(request);
@@ -128,6 +149,8 @@ public class StockKafkaRequestHandler implements KafkaMessageHandler {
                 handleMessage(new ConsumerRecord<String,String>("",0,0,"",request.getJSONObject("updating_order").toString()));
             }
         }
+        System.out.println("HANDLE sell : " + StockKafkaRequestHandler.SellOrders.values().size());
+        System.out.println("HANDLE buy : " + StockKafkaRequestHandler.BuyOrders.values().size());
 
     }
 
@@ -244,7 +267,6 @@ public class StockKafkaRequestHandler implements KafkaMessageHandler {
 
     private boolean resolvePendingUpdate(JSONObject request) {
         JSONObject updating_order = request.getJSONObject("updating_order");
-        System.out.println("HASH OF DELETED SHIT : "+ Base64.getEncoder().encodeToString(hashString(updating_order.toString()).getBytes()).toString());
         if(updating_order.getString("action").equals("Buy_Order")) {
             StockKafkaRequestHandler.BuyOrders.remove(Base64.getEncoder().encodeToString(hashString(updating_order.toString()).getBytes()));
         }
